@@ -6,7 +6,7 @@ import 'package:my_vpn/screens/home_screen.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  AppPreferences.initHive();
+  await AppPreferences.initHive();
 
   runApp(const MyApp());
 }
