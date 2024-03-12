@@ -4,6 +4,9 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:my_vpn/appPreferences/app_preferences.dart';
 import 'package:my_vpn/main.dart';
+import 'package:my_vpn/widgets/custom_widget.dart';
+import 'package:my_vpn/widgets/down_up_line.dart';
+import 'package:my_vpn/widgets/location_ping_line.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -74,6 +77,20 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: locationSelectionBottomNavigation(context),
+      body: const Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          // 2 round widget
+          // location _ ping
+          LPLine(),
+
+          // button for vpn
+
+          // 2 round widget
+          //dowload + ping
+          DULine(),
+        ],
+      ),
     );
   }
 }

@@ -32,7 +32,7 @@ class CustomdWidget extends StatelessWidget {
           Text(
             subTitleText,
             style: const TextStyle(
-              fontSize: 13,
+              fontSize: 12,
               fontWeight: FontWeight.w600,
             ),
           ),
