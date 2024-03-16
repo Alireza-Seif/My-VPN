@@ -4,7 +4,6 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:my_vpn/appPreferences/app_preferences.dart';
 import 'package:my_vpn/main.dart';
-import 'package:my_vpn/widgets/custom_widget.dart';
 import 'package:my_vpn/widgets/down_up_line.dart';
 import 'package:my_vpn/widgets/location_ping_line.dart';
 
@@ -55,6 +54,56 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
+  Widget vpnRroundButton() {
+    return Column(
+      children: [
+        Semantics(
+          button: true,
+          child: InkWell(
+            onTap: () {},
+            borderRadius: BorderRadius.circular(100),
+            child: Container(
+              padding: const EdgeInsets.all(18),
+              decoration: const BoxDecoration(
+                  shape: BoxShape.circle, color: Colors.red),
+              child: Container(
+                padding: const EdgeInsets.all(18),
+                decoration: const BoxDecoration(
+                    shape: BoxShape.circle, color: Colors.red),
+                child: Container(
+                  height: sizeScreen.height * .14,
+                  width: sizeScreen.width * .14,
+                  decoration: const BoxDecoration(
+                      shape: BoxShape.circle, color: Colors.red),
+                  child: const Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.power_settings_new,
+                        size: 30,
+                        color: Colors.white,
+                      ),
+                      SizedBox(
+                        height: 16,
+                      ),
+                      Text(
+                        'Tap to Connect',
+                        style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        )
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     sizeScreen = MediaQuery.of(context).size;
@@ -77,18 +126,19 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: locationSelectionBottomNavigation(context),
-      body: const Column(
+      body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           // 2 round widget
           // location _ ping
-          LPLine(),
+          const LPLine(),
 
           // button for vpn
+          vpnRroundButton(),
 
           // 2 round widget
           //dowload + ping
-          DULine(),
+          const DULine(),
         ],
       ),
     );
