@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:my_vpn/appPreferences/app_preferences.dart';
+import 'package:my_vpn/app_preferences/app_preferences.dart';
 import 'package:my_vpn/main.dart';
 import 'package:my_vpn/widgets/down_up_line.dart';
 import 'package:my_vpn/widgets/location_ping_line.dart';
@@ -54,7 +54,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget vpnRroundButton() {
+  Widget vpnRoundButton() {
     return Column(
       children: [
         Semantics(
@@ -134,7 +134,7 @@ class HomeScreen extends StatelessWidget {
           const LPLine(),
 
           // button for vpn
-          vpnRroundButton(),
+          vpnRoundButton(),
 
           // 2 round widget
           //dowload + ping
