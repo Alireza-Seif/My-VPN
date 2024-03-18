@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       darkTheme: ThemeData(
           brightness: Brightness.dark,
           appBarTheme: const AppBarTheme(centerTitle: true, elevation: 3)),
-      home: const HomeScreen(),
+      home:  HomeScreen(),
     );
   }
 }

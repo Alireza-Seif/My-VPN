@@ -6,9 +6,12 @@ import 'package:my_vpn/app_preferences/app_preferences.dart';
 import 'package:my_vpn/main.dart';
 import 'package:my_vpn/widgets/down_up_line.dart';
 import 'package:my_vpn/widgets/location_ping_line.dart';
+import 'package:my_vpn/widgets/vpn_round_button.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+   const HomeScreen({super.key});
+
+
 
   locationSelectionBottomNavigation(BuildContext context) {
     return SafeArea(
@@ -54,56 +57,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget vpnRoundButton() {
-    return Column(
-      children: [
-        Semantics(
-          button: true,
-          child: InkWell(
-            onTap: () {},
-            borderRadius: BorderRadius.circular(100),
-            child: Container(
-              padding: const EdgeInsets.all(18),
-              decoration: const BoxDecoration(
-                  shape: BoxShape.circle, color: Colors.red),
-              child: Container(
-                padding: const EdgeInsets.all(18),
-                decoration: const BoxDecoration(
-                    shape: BoxShape.circle, color: Colors.red),
-                child: Container(
-                  height: sizeScreen.height * .14,
-                  width: sizeScreen.width * .14,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.circle, color: Colors.red),
-                  child: const Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.power_settings_new,
-                        size: 30,
-                        color: Colors.white,
-                      ),
-                      SizedBox(
-                        height: 16,
-                      ),
-                      Text(
-                        'Tap to Connect',
-                        style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
-        )
-      ],
-    );
-  }
-
+  
   @override
   Widget build(BuildContext context) {
     sizeScreen = MediaQuery.of(context).size;
@@ -131,14 +85,14 @@ class HomeScreen extends StatelessWidget {
         children: [
           // 2 round widget
           // location _ ping
-          const LPLine(),
+           LPLine(),
 
           // button for vpn
-          vpnRoundButton(),
+          VpnRoundButton(),
 
           // 2 round widget
           //dowload + ping
-          const DULine(),
+           DULine(),
         ],
       ),
     );
