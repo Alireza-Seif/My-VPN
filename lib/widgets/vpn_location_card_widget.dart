@@ -10,7 +10,7 @@ import 'package:my_vpn/models/vpn_info.dart';
 import 'package:my_vpn/vpn_engine/vpn_engine.dart';
 
 class VpnLocationCard extends StatelessWidget {
-  VpnLocationCard({super.key, required this.vpnInfo});
+  const VpnLocationCard({super.key, required this.vpnInfo});
 
   final VpnInfo vpnInfo;
 

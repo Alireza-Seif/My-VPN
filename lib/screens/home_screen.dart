@@ -8,7 +8,6 @@ import 'package:my_vpn/screens/available_vpn_servers_location_screen.dart';
 import 'package:my_vpn/vpn_engine/vpn_engine.dart';
 import 'package:my_vpn/widgets/down_up_line.dart';
 import 'package:my_vpn/widgets/location_ping_line.dart';
-import 'package:my_vpn/widgets/vpn_round_button.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -61,6 +60,64 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
+  Widget vpnRoundButton() {
+    return Column(
+      children: [
+        Semantics(
+          button: true,
+          child: InkWell(
+            onTap: () {
+              homeController.connectToVpnNow();
+            },
+            borderRadius: BorderRadius.circular(100),
+            child: Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: homeController.getRoundVpnButtonColor.withOpacity(.1),
+              ),
+              child: Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: homeController.getRoundVpnButtonColor.withOpacity(.3),
+                ),
+                child: Container(
+                  height: sizeScreen.height * .14,
+                  width: sizeScreen.height * .14,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: homeController.getRoundVpnButtonColor,
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Icon(
+                        Icons.power_settings_new,
+                        size: 30,
+                        color: Colors.white,
+                      ),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      Text(
+                        homeController.getRoundVpnButtonText,
+                        style: const TextStyle(
+                            fontSize: 12,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        )
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     VpnEngine.snapshotVpnStage().listen((event) {
@@ -94,7 +151,7 @@ class HomeScreen extends StatelessWidget {
           LPLine(),
 
           // button for vpn
-          Obx(() => VpnRoundButton()),
+          Obx(() => vpnRoundButton()),
 
           // 2 round widget
           //dowload + ping
