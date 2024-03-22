@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_vpn/all_controllers/controller_vpn_location.dart';
@@ -9,7 +10,6 @@ class AvailableVpnServersLocationScreen extends StatelessWidget {
   AvailableVpnServersLocationScreen({super.key});
 
   final vpnLocationController = ControllerVPNLocation();
-
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,19 @@ class AvailableVpnServersLocationScreen extends StatelessWidget {
             'VPN Locations (${vpnLocationController.vpnFreeServersAvailableList.length})',
           ),
         ),
-        floatingActionButton: Padding(padding: EdgeInsets.only(bottom: 10,right: ),),
+        floatingActionButton: Padding(
+          padding: const EdgeInsets.only(bottom: 10, right: 10),
+          child: FloatingActionButton(
+            backgroundColor: Colors.redAccent,
+            onPressed: () {
+              vpnLocationController.retrieveVpnInformation();
+            },
+            child: const Icon(
+              CupertinoIcons.refresh_circled,
+              size: 40,
+            ),
+          ),
+        ),
         body: vpnLocationController.isLoadingNewLocations.value
             ? loadingUIWidget()
             : vpnLocationController.vpnFreeServersAvailableList.isEmpty
