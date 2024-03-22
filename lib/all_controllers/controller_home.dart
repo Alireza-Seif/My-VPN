@@ -23,8 +23,8 @@ class ControllerHome extends GetxController {
     //disconnected
     if (vpnConnectionState.value == VpnEngine.vpnDisconnectedNow) {
       final dataConfigVpn =
-          Base64Decoder().convert(vpnInfo.value.base64OpenVPNConfigurationData);
-      final configuration = Utf8Decoder().convert(dataConfigVpn);
+          const Base64Decoder().convert(vpnInfo.value.base64OpenVPNConfigurationData);
+      final configuration = const Utf8Decoder().convert(dataConfigVpn);
 
       final vpnConfiguration = VpnConfiguration(
           userName: 'vpn',

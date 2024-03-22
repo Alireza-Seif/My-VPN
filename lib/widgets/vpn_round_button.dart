@@ -16,16 +16,18 @@ class VpnRoundButton extends StatelessWidget {
         Semantics(
           button: true,
           child: InkWell(
-            onTap: () {},
+            onTap: () {
+              homeController.connectToVpnNow(); 
+            },
             borderRadius: BorderRadius.circular(100),
             child: Container(
-              padding: const EdgeInsets.all(18),
+              padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: homeController.getRoundVpnButtonColor.withOpacity(.1),
               ),
               child: Container(
-                padding: const EdgeInsets.all(18),
+                padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: homeController.getRoundVpnButtonColor.withOpacity(.3),
@@ -40,17 +42,17 @@ class VpnRoundButton extends StatelessWidget {
                   child:  Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.power_settings_new,
                         size: 30,
                         color: Colors.white,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       ),
                       Text(
                        homeController.getRoundVpnButtonText,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 12,
                             color: Colors.white,
                             fontWeight: FontWeight.w600),

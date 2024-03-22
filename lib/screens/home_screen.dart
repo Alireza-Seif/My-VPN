@@ -94,7 +94,7 @@ class HomeScreen extends StatelessWidget {
           LPLine(),
 
           // button for vpn
-          VpnRoundButton(),
+          Obx(() => VpnRoundButton()),
 
           // 2 round widget
           //dowload + ping
