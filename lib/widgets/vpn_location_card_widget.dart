@@ -7,6 +7,7 @@ import 'package:my_vpn/all_controllers/controller_home.dart';
 import 'package:my_vpn/app_preferences/app_preferences.dart';
 import 'package:my_vpn/main.dart';
 import 'package:my_vpn/models/vpn_info.dart';
+import 'package:my_vpn/vpn_engine/vpn_engine.dart';
 
 class VpnLocationCard extends StatelessWidget {
   VpnLocationCard({super.key, required this.vpnInfo});
@@ -35,7 +36,19 @@ class VpnLocationCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
       ),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          homeController.vpnInfo.value = vpnInfo;
+          AppPreferences.vpnInfoObj = vpnInfo;
+          Get.back();
+          if (homeController.vpnConnectionState.value ==
+              VpnEngine.vpnConnectedNow) {
+            VpnEngine.stopVpnNow();
+            Future.delayed(const Duration(seconds: 3),
+                () => homeController.connectToVpnNow());
+          } else {
+            homeController.connectToVpnNow();
+          }
+        },
         borderRadius: BorderRadius.circular(16),
         child: ListTile(
           shape: RoundedRectangleBorder(
