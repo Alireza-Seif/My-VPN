@@ -1,24 +1,16 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_vpn/all_controllers/controller_vpn_location.dart';
 import 'package:my_vpn/widgets/loading_ui_widget.dart';
 import 'package:my_vpn/widgets/no_vpn_server_found_ui_widget.dart';
+import 'package:my_vpn/widgets/vpn_available_servers_data.dart';
 
-class AvailableVpnServersLocation extends StatelessWidget {
-  AvailableVpnServersLocation({super.key});
+class AvailableVpnServersLocationScreen extends StatelessWidget {
+  AvailableVpnServersLocationScreen({super.key});
 
   final vpnLocationController = ControllerVPNLocation();
 
-vpnAvailableServersData() {
-  return ListView.builder(itemCount: vpnLocationController.vpnFreeServersAvailableList.length,
-  physics: BouncingScrollPhysics(),padding: EdgeInsets.all(3),
-  itemBuilder: ((context, index) {
-    
-  }),);
-}
- 
+
   @override
   Widget build(BuildContext context) {
     if (vpnLocationController.vpnFreeServersAvailableList.isEmpty) {
@@ -32,6 +24,7 @@ vpnAvailableServersData() {
             'VPN Locations (${vpnLocationController.vpnFreeServersAvailableList.length})',
           ),
         ),
+        floatingActionButton: Padding(padding: EdgeInsets.only(bottom: 10,right: ),),
         body: vpnLocationController.isLoadingNewLocations.value
             ? loadingUIWidget()
             : vpnLocationController.vpnFreeServersAvailableList.isEmpty
