@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_vpn/main.dart';
 import 'package:my_vpn/models/network_ip_info.dart';
