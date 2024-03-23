@@ -18,8 +18,8 @@ class IPInfo {
   });
 
   IPInfo.fromJson(Map<String, dynamic> jsonData) {
-    countryName = jsonData['country'];
-    regionName = jsonData[regionName] ?? '';
+    countryName = jsonData['country'] ?? '';
+    regionName = jsonData['regionName'] ?? '';
     cityName = jsonData['city'] ?? '';
     zipCode = jsonData['zip'] ?? '';
     timezone = jsonData['timezone'] ?? 'Unknown';

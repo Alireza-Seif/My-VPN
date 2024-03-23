@@ -31,6 +31,7 @@ class CpnnectedNetworkIPInfoScreen extends StatelessWidget {
         child: FloatingActionButton(
           backgroundColor: Colors.redAccent,
           onPressed: () {
+            ipInfo.value = IPInfo.fromJson({});
             ApiVpnGate.retrieveIPDetails(ipInformation: ipInfo);
           },
           child: const Icon(CupertinoIcons.refresh_circled),
@@ -52,6 +53,18 @@ class CpnnectedNetworkIPInfoScreen extends StatelessWidget {
                   )),
             ),
 
+            //isp
+            NetworkIPInfoWidget(
+              networkIPInfo: NetworkIPInfo(
+                titleText: 'Internet Service Provider',
+                subtitleText: ipInfo.value.internetServiceProvider,
+                iconData: const Icon(
+                  Icons.account_tree,
+                  color: Colors.deepOrange,
+                ),
+              ),
+            ),
+
             //location
             NetworkIPInfoWidget(
               networkIPInfo: NetworkIPInfo(
@@ -62,6 +75,28 @@ class CpnnectedNetworkIPInfoScreen extends StatelessWidget {
                   iconData: const Icon(
                     CupertinoIcons.location_solid,
                     color: Colors.green,
+                  )),
+            ),
+
+            //zip code
+            NetworkIPInfoWidget(
+              networkIPInfo: NetworkIPInfo(
+                  titleText: 'Zip Code',
+                  subtitleText: ipInfo.value.zipCode,
+                  iconData: const Icon(
+                    CupertinoIcons.map_pin_ellipse,
+                    color: Colors.purpleAccent,
+                  )),
+            ),
+
+            //timezone
+            NetworkIPInfoWidget(
+              networkIPInfo: NetworkIPInfo(
+                  titleText: 'Timezone',
+                  subtitleText: ipInfo.value.timezone,
+                  iconData: const Icon(
+                    Icons.share_arrival_time_outlined,
+                    color: Colors.cyan,
                   )),
             ),
           ],

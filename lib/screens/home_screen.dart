@@ -5,6 +5,7 @@ import 'package:my_vpn/all_controllers/controller_home.dart';
 import 'package:my_vpn/app_preferences/app_preferences.dart';
 import 'package:my_vpn/main.dart';
 import 'package:my_vpn/screens/available_vpn_servers_location_screen.dart';
+import 'package:my_vpn/screens/connected_network_ip_info_screen.dart';
 import 'package:my_vpn/vpn_engine/vpn_engine.dart';
 import 'package:my_vpn/widgets/down_up_line.dart';
 import 'package:my_vpn/widgets/location_ping_line.dart';
@@ -129,7 +130,9 @@ class HomeScreen extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.redAccent,
         title: const Text('My Free VPN'),
-        leading: IconButton(onPressed: () {}, icon: const Icon(Icons.info)),
+        leading: IconButton(onPressed: () {
+          Get.to(()=> const CpnnectedNetworkIPInfoScreen());
+        }, icon: const Icon(Icons.info)),
         actions: [
           IconButton(
               onPressed: () {
