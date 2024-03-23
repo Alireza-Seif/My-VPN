@@ -64,6 +64,7 @@ class HomeScreen extends StatelessWidget {
   Widget vpnRoundButton() {
     return Column(
       children: [
+        //vpn button
         Semantics(
           button: true,
           child: InkWell(
@@ -115,6 +116,26 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         )
+
+        //status of connection
+        ,
+        Container(
+          margin: EdgeInsets.only(
+              top: sizeScreen.height * .15, bottom: sizeScreen.height * .02),
+          padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 16),
+          decoration: BoxDecoration(
+            color: Colors.redAccent,
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Text(
+            homeController.vpnConnectionState.value == VpnEngine.vpnDeniedNow
+                ? ' Not Connected'
+                : homeController.vpnConnectionState
+                    .replaceAll('_', ' ')
+                    .toUpperCase(),
+            style: const TextStyle(fontSize: 13, color: Colors.white),
+          ),
+        ),
       ],
     );
   }
@@ -130,9 +151,11 @@ class HomeScreen extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.redAccent,
         title: const Text('My Free VPN'),
-        leading: IconButton(onPressed: () {
-          Get.to(()=> const CpnnectedNetworkIPInfoScreen());
-        }, icon: const Icon(Icons.info)),
+        leading: IconButton(
+            onPressed: () {
+              Get.to(() => const CpnnectedNetworkIPInfoScreen());
+            },
+            icon: const Icon(Icons.info)),
         actions: [
           IconButton(
               onPressed: () {
